@@ -1,6 +1,18 @@
+from flask import Blueprint, jsonify
 from .player_bio_route import player_bp
 from .pitching import pitching_bp
 from .batting import batting_bp
+
+# Create a root blueprint
+root_bp = Blueprint('root', __name__)
+
+@root_bp.route('/')
+def home():
+    return jsonify({
+        'status': 'success',
+        'message': 'Backend is running~~~'
+    })
+
 
 def init_routes(app):
     """Initialize all route blueprints"""
